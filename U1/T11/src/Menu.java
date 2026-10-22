@@ -40,8 +40,12 @@ public class Menu {
                 case 5 ->{
                     xestor.buscarTarefaPorDescricion();
                 }
-                case 6 ->{}
-                case 7 ->{}
+                case 6 ->{
+                    xestor.buscarTarefaPorSolicitante();
+                }
+                case 7 ->{
+                    xestor.resumoTarefas();
+                }
                 case 8 ->{
                     xestor.exemploDeTarefa();
                 }
