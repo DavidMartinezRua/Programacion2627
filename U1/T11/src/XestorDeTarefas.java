@@ -17,7 +17,7 @@ public class XestorDeTarefas {
         String[] nomeTarefa = {"Jugar al Balatro", "Programar", "Participar en el Torneo", "Budokai Tenkaichi 2"};
         String[] solicitante = {"Sergio", "Mesi", "Gabriel", "Franco", "Hitler"};
         String[] responsable = {"Sergio", "Mesi", "Gabriel", "Franco", "Hitler"};
-        String[] descricion = {"GOTY", "Me encantan los niños", "Salvar a España", "Espíritu Ario", "Seguimos programando"};
+        String[] descricion = {"GOTY", "Me encantan los niños", "Salvar a España, salvar nustra casa", "Espíritu Ario", "Seguimos programando", "Me gustaria ir a casa."};
         for (int i = 0; i < 10; i++) {
             tarefas.add(new Tarefa(nomeTarefa[random.nextInt(nomeTarefa.length)], solicitante[random.nextInt(solicitante.length)], responsable[random.nextInt(responsable.length)], descricion[random.nextInt(descricion.length)]));
         }
@@ -82,4 +82,53 @@ public class XestorDeTarefas {
             }
         }
     }
+
+    public void buscarTarefaPorDescricion(){
+        String descripcion = "";
+
+        System.out.println("Escribe o contido da descripcion da tarefa que queres buscar: ");
+        descripcion = teclado.nextLine();
+
+        for(Tarefa t : tarefas){
+            if (t.getDescricion().toLowerCase().contains(descripcion.toLowerCase())) {
+                System.out.println(t);
+            }
+        }
+    }
+
+    public void buscarTarefaPorSolicitante(){
+        String solicitante = "";
+
+        System.out.println("Escribe o solicitante da tarefa que queres buscar: ");
+        solicitante = teclado.nextLine();
+
+        for(Tarefa t : tarefas){
+            if (t.getSolicitante().toLowerCase().contains(solicitante.toLowerCase())) {
+                System.out.println(t);
+            }
+        }
+    }
+
+    public void resumoTarefas(){
+        int pendentes = 0, enRevisions = 0, completadas = 0;
+
+        for(Tarefa t : tarefas){
+            if (t.getEstado().equals(Estado.PENDENTE)) {
+                pendentes++;
+            }
+            if (t.getEstado().equals(Estado.EN_REVISIÓN)) {
+                enRevisions++;
+            }
+            if (t.getEstado().equals(Estado.COMPLETADA)) {
+                completadas++;
+            }
+        }
+
+        System.out.println("Numero total de tarefas: "+ tarefas.size());
+        System.out.println("Numero de tarefas pendentes: "+ pendentes);
+        System.out.println("Numero de tarefas en revisión: "+ enRevisions);
+        System.out.println("Numero de tarefas completadas: "+ completadas);
+
+    }
+    
 }

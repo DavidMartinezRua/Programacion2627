@@ -37,7 +37,9 @@ public class Menu {
                 case 4 ->{
                     xestor.completarTarefa();
                 }
-                case 5 ->{}
+                case 5 ->{
+                    xestor.buscarTarefaPorDescricion();
+                }
                 case 6 ->{}
                 case 7 ->{}
                 case 8 ->{
