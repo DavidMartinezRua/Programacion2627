@@ -49,7 +49,9 @@ public class Menu {
                 case 8 ->{
                     xestor.exemploDeTarefa();
                 }
-                case 0 ->{}
+                case 0 ->{
+                    System.out.println("Adios!");
+                }
                 default -> {
                     System.out.println("Opción invalida.");
                 }
