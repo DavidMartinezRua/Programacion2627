@@ -79,7 +79,7 @@ public class PalabraOculta {
 
     @Override
     public String toString() {
-        return "PalabraOculta [palabraCorrectaDividida=" + Arrays.toString(palabraCorrectaDividida) + "]";
+        return "Palabra: [palabraCorrectaDividida=" + Arrays.toString(palabraCorrectaDividida) + "]";
     }
 
 }

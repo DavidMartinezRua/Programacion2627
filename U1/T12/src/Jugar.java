@@ -12,7 +12,10 @@ public class Jugar {
     }
 
     public void partida(){
-        intentos--;
+        do {
+            intentos--;
+        }while (intentos>0);
+
     }
 
 }
