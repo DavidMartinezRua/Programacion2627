@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,11 +7,15 @@ public class PalabraDoDia {
     private Scanner teclado;
     private String palabraCorrecta;
     private int selector;
+    private String[] intento;
+    private int contador;
 
     public PalabraDoDia() {
         random = new Random();
         teclado = new Scanner(System.in);
         this.palabraCorrecta = "";
+        this.contador = 6;
+        this.intento = new String[contador];
         this.selector = 0;
     }
 
@@ -30,7 +35,23 @@ public class PalabraDoDia {
         this.selector = selector;
     }
 
-    public void seleccionarDificultad(){
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+
+    public String[] getIntento() {
+        return intento;
+    }
+
+    public void setIntento(String[] intento) {
+        this.intento = intento;
+    }
+
+    public void seleccionarDificultad() {
 
         System.out.println("Selecciona dificultad:");
         do {
@@ -39,40 +60,75 @@ public class PalabraDoDia {
             System.out.println("3. Difícil");
 
             setSelector(teclado.nextInt());
-        }while (getSelector() > 3 || getSelector() < 0);
+            teclado.nextLine();
+        } while (getSelector() > 3 || getSelector() < 0);
     }
 
-    public void xenerarPalabraOculta(){
+    public void xenerarPalabraOcultaFacil() {
+        setPalabraCorrecta(ListaPalabras.listaFacil[random.nextInt(ListaPalabras.listaFacil.length)].toUpperCase());
+
+    }
+
+    public void xenerarPalabraOcultaNormal() {
+        setPalabraCorrecta(ListaPalabras.listaNormal[random.nextInt(ListaPalabras.listaNormal.length)].toUpperCase());
+
+    }
+
+    public void xenerarPalabraOcultaDificil() {
+        setPalabraCorrecta(ListaPalabras.listaDificil[random.nextInt(ListaPalabras.listaDificil.length)].toUpperCase());
+
+    }
+
+    public void xenerarPalabraOculta() {
         seleccionarDificultad();
-        switch (getSelector()){
-            case 1 ->{xenerarPalabraOcultaFacil();}
-            case 2 ->{xenerarPalabraOcultaNormal();}
-            case 3 ->{xenerarPalabraOcultaDificil();}
+        switch (getSelector()) {
+            case 1 -> {
+                xenerarPalabraOcultaFacil();
+            }
+            case 2 -> {
+                xenerarPalabraOcultaNormal();
+            }
+            case 3 -> {
+                xenerarPalabraOcultaDificil();
+            }
         }
     }
 
-    public void xenerarPalabraOcultaFacil(){
-        setPalabraCorrecta(ListaPalabras.listaFacil[random.nextInt(ListaPalabras.listaFacil.length)]);
+    public void pedirPalabra() {
+        if (contador > 0) {
+            System.out.println("Introduce unha palabra:");
 
+            do {
+                intento[6 - contador] = teclado.nextLine().toUpperCase();
+                if (intento[6 - contador].length() != 5){
+                    System.out.println("La palabra debe ser de 5 letras. Intentalo otra vez.");
+                }
+            } while (intento[6 - contador].length() != 5);
+
+            contador--;
+        } else {
+            System.out.println("Non quedan intentos.");
+        }
     }
-    public void xenerarPalabraOcultaNormal(){
-        setPalabraCorrecta(ListaPalabras.listaNormal[random.nextInt(ListaPalabras.listaNormal.length)]);
 
-    }
+    public void mostrarIntentos() {
+        for (int i = 0; i < intento.length; i++) {
+            for (int j = 0; j < 5; j++) {
 
-    public void xenerarPalabraOcultaDificil(){
-        setPalabraCorrecta(ListaPalabras.listaDificil[random.nextInt(ListaPalabras.listaDificil.length)]);
+                if (intento[i] != null){
 
-    }
-
-    public void pedirPalabra(){
-        System.out.println("");
+                    System.out.print(intento[i].charAt(j)+"\t");
+                }else {
+                    System.out.print("-\t");
+                }
+            }
+            System.out.println();
+        }
     }
 
     @Override
     public String toString() {
         return "PalabraDoDia{" +
-                "palabraCorrecta='" + palabraCorrecta + '\'' +
-                '}';
+                "palabraCorrecta= '" + palabraCorrecta + "\'  intentos restantes: " + contador + '}';
     }
 }

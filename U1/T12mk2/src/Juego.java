@@ -1,29 +1,23 @@
 public class Juego {
-    private int contador;
-    private String[] intento;
+    private PalabraDoDia jueguito;
+    private String opcion;
 
     public Juego() {
-        this.contador = 6;
-        this.intento = new String[contador];
+        this.opcion = "S";
+        this.jueguito = jueguito;
     }
 
-    public int getContador() {
-        return contador;
+    public String getOpcion() {
+        return opcion;
     }
 
-    public void setContador(int contador) {
-        this.contador = contador;
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
     }
 
-    public String[] getIntento() {
-        return intento;
-    }
+    public void menu(){
+        do {
 
-    public void setIntento(String[] intento) {
-        this.intento = intento;
-    }
-
-    public void mostrarPalabra(){
-
+        }while (!opcion.equals("N"));
     }
 }

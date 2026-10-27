@@ -6,5 +6,17 @@ public class main {
         palabraDoDia.xenerarPalabraOculta();
 
         System.out.println(palabraDoDia);
+
+        palabraDoDia.pedirPalabra();
+
+        System.out.println(palabraDoDia);
+
+        palabraDoDia.pedirPalabra();
+
+        System.out.println(palabraDoDia);
+
+        palabraDoDia.pedirPalabra();
+
+        palabraDoDia.mostrarIntentos();
     }
 }
