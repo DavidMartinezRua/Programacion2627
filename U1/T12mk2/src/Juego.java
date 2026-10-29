@@ -1,10 +1,14 @@
+import java.util.Scanner;
+
 public class Juego {
     private PalabraDoDia jueguito;
     private String opcion;
+    private Scanner teclado;
 
     public Juego() {
         this.opcion = "S";
-        this.jueguito = jueguito;
+        jueguito = new PalabraDoDia();
+        teclado = new Scanner(System.in);
     }
 
     public String getOpcion() {
@@ -17,7 +21,11 @@ public class Juego {
 
     public void menu(){
         do {
-
+            System.out.println("Quieres jugar? (S/N)");
+            opcion = teclado.nextLine();
+            if (opcion.equals("S")){
+                jueguito.partida();
+            }
         }while (!opcion.equals("N"));
     }
 }

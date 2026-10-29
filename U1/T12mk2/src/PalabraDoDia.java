@@ -80,6 +80,7 @@ public class PalabraDoDia {
     }
 
     public void xenerarPalabraOculta() {
+        palabraCorrecta = "";
         seleccionarDificultad();
         switch (getSelector()) {
             case 1 -> {
@@ -100,7 +101,7 @@ public class PalabraDoDia {
 
             do {
                 intento[6 - contador] = teclado.nextLine().toUpperCase();
-                if (intento[6 - contador].length() != 5){
+                if (intento[6 - contador].length() != 5) {
                     System.out.println("La palabra debe ser de 5 letras. Intentalo otra vez.");
                 }
             } while (intento[6 - contador].length() != 5);
@@ -115,15 +116,47 @@ public class PalabraDoDia {
         for (int i = 0; i < intento.length; i++) {
             for (int j = 0; j < 5; j++) {
 
-                if (intento[i] != null){
+                if (intento[i] != null) {
 
-                    System.out.print(intento[i].charAt(j)+"\t");
-                }else {
+                    if (palabraCorrecta.charAt(j) == intento[i].charAt(j)) {
+                        System.out.print("\u001B[32m" + intento[i].charAt(j) + "\u001B[0m\t");
+
+                    } else if (palabraCorrecta.contains(intento[i].substring(j,j+1))) {
+                        System.out.print("\u001B[33m" + intento[i].charAt(j) + "\u001B[0m\t");
+
+                    } else if (!palabraCorrecta.contains(intento[i].substring(j))) {
+                        System.out.print(intento[i].charAt(j) + "\t");
+                    }
+
+
+                    /* if (palabraCorrecta.contains(intento[i].substring(j))&&palabraCorrecta.charAt(j) != intento[i].charAt(j)){
+                        System.out.print("\u001B[33m" +intento[i].charAt(j)+ "\u001B[0m\t");
+
+                    } else if (palabraCorrecta.charAt(j) == intento[i].charAt(j)){
+                        System.out.print("\u001B[32m" +intento[i].charAt(j)+ "\u001B[0m\t");
+
+                    }else {
+                        System.out.print(intento[i].charAt(j)+"\t");
+                    } */
+
+                } else {
                     System.out.print("-\t");
                 }
             }
             System.out.println();
         }
+        System.out.println("Quedan " + contador + " intentos.");
+    }
+
+    public void partida() {
+        contador = 6;
+        palabraCorrecta = "";
+        xenerarPalabraOculta();
+        System.out.println(palabraCorrecta);
+        do {
+            pedirPalabra();
+            mostrarIntentos();
+        } while (contador != 0);
     }
 
     @Override

@@ -1,7 +1,11 @@
 public class main {
     public static void main(String[] args) {
 
-        PalabraDoDia palabraDoDia = new PalabraDoDia();
+        Juego juego = new Juego();
+
+        juego.menu();
+
+       /* PalabraDoDia palabraDoDia = new PalabraDoDia();
 
         palabraDoDia.xenerarPalabraOculta();
 
@@ -9,14 +13,18 @@ public class main {
 
         palabraDoDia.pedirPalabra();
 
-        System.out.println(palabraDoDia);
-
-        palabraDoDia.pedirPalabra();
+        palabraDoDia.mostrarIntentos();
 
         System.out.println(palabraDoDia);
 
         palabraDoDia.pedirPalabra();
 
         palabraDoDia.mostrarIntentos();
+
+        System.out.println(palabraDoDia);
+
+        palabraDoDia.pedirPalabra();
+
+        palabraDoDia.mostrarIntentos(); */
     }
 }
