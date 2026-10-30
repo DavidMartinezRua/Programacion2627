@@ -112,7 +112,59 @@ public class PalabraDoDia {
         }
     }
 
+
     public void mostrarIntentos() {
+
+        for (int i = 0; i < intento.length; i++) {
+
+            if (intento[i] != null) {
+
+                char[] letrasDisponibles = palabraCorrecta.toCharArray();
+
+                for (int j = 0; j < 5; j++) {
+
+                    if (palabraCorrecta.charAt(j) == intento[i].charAt(j)) {
+
+                        System.out.print("\u001B[32m" + intento[i].charAt(j) + "\u001B[0m\t");
+
+                        letrasDisponibles[j] = '-';
+
+                    } else {
+
+                        boolean encontrada = false;
+
+                        for (int k = 0; k < 5 && !encontrada; k++) {
+
+                            if (intento[i].charAt(j) == letrasDisponibles[k]) {
+
+                                System.out.print("\u001B[33m" + intento[i].charAt(j) + "\u001B[0m\t");
+
+                                letrasDisponibles[k] = '-';
+                                encontrada = true;
+                            }
+                        }
+
+                        if (!encontrada) {
+                            System.out.print(intento[i].charAt(j) + "\t");
+                        }
+                    }
+                }
+
+            } else {
+
+                for (int j = 0; j < 5; j++) {
+                    System.out.print("-\t");
+                }
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("Quedan " + contador + " intentos.");
+    }
+
+
+    public void mostrarIntentosMal() {
         for (int i = 0; i < intento.length; i++) {
             for (int j = 0; j < 5; j++) {
 
@@ -121,7 +173,7 @@ public class PalabraDoDia {
                     if (palabraCorrecta.charAt(j) == intento[i].charAt(j)) {
                         System.out.print("\u001B[32m" + intento[i].charAt(j) + "\u001B[0m\t");
 
-                    } else if (palabraCorrecta.contains(intento[i].substring(j,j+1))) {
+                    } else if (palabraCorrecta.contains(intento[i].substring(j))) {
                         System.out.print("\u001B[33m" + intento[i].charAt(j) + "\u001B[0m\t");
 
                     } else if (!palabraCorrecta.contains(intento[i].substring(j))) {
