@@ -80,8 +80,7 @@ public class Mar {
     }
 
     // Comprueba si un barco puede colocarse en una posición
-    private boolean puedeColocarse(int fila, int columna,
-                                   int tamaño, boolean horizontal) {
+    private boolean puedeColocarse(int fila, int columna, int tamaño, boolean horizontal) {
 
         for (int i = 0; i < tamaño; i++) {
 

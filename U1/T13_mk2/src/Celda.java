@@ -1,16 +1,34 @@
 public class Celda {
 
     private Barco barco;
-    private String bombardeada;
+    private boolean bombardeada;
 
     public Celda() {
-        this.bombardeada = bombardeada;
+        this.barco = null;
+        this.bombardeada = false;
+    }
+
+    public Barco getBarco() {
+        return barco;
+    }
+
+    public void setBarco(Barco barco) {
         this.barco = barco;
     }
 
-    public void corbeta(){
-        String nome = "corbeta";
-        int tamño = 1;
-        this.barco = new Barco(nome,tamño);
+    public boolean isBombardeada() {
+        return bombardeada;
+    }
+
+    public void disparar() {
+        bombardeada = true;
+
+        if (barco != null) {
+            barco.recibirImpacto();
+        }
+    }
+
+    public boolean hayBarco() {
+        return barco != null;
     }
 }
