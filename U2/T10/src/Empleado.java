@@ -12,8 +12,32 @@ public class Empleado extends Persona{
         this.departamento = departamento;
     }
 
+    public int getNumeroEmpleado() {
+        return numeroEmpleado;
+    }
+
+    public void setNumeroEmpleado(int numeroEmpleado) {
+        this.numeroEmpleado = numeroEmpleado;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
     @Override
     public String toString() {
-        return "Empleado{" +  "numeroEmpleado=" + numeroEmpleado +  ", salario=" + salario +  ", departamento='" + departamento + '\'' +  '}';
+        return "Empleado{nombre= "+ getNombre() +  ", numeroEmpleado=" + numeroEmpleado +  ", salario=" + salario +  ", departamento='" + departamento + '\'' +  '}';
     }
 }

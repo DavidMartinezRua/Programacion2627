@@ -41,7 +41,7 @@ public class Empresa {
 
         Empleado e10 = new Empleado("Sara Díaz", "01234567K", LocalDate.of(2000, 6, 22), 110, 1950, "Marketing");
 
-        Empleado e11 = new Empleado("Kageaki", "11122233A", LocalDate.of(1923, 3, 22), 1, 2200.00, "Ventas");
+        Empleado e11 = new Empleado("Minato Kageaki", "11122233A", LocalDate.of(1923, 3, 22), 1, 2200.00, "Ventas");
 
         Empleado[] grupo = {e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11};
         for (int i = 0; i < grupo.length; i++) {
@@ -71,10 +71,142 @@ public class Empresa {
 
     public void mostrarEmpresa(){
         System.out.println("\t---" + getNombre() + "---");
-        for (int i = 0; i < empleados.length; i++) {
-            if (!empleados[i].getNombre().isEmpty()){
+        for (int i = 0; i < numeroEmpleados; i++) {
+            if (empleados[i].getNombre() != null){
                 System.out.println(empleados[i]);
             }
+        }
+    }
+
+    public void filtrarSueldo(double filtro){
+        System.out.println("---Empleados con sueldo superior a " + filtro + "---");
+        for (int i = 0; i < numeroEmpleados; i++) {
+            if (empleados[i].getSalario() > filtro){
+                System.out.println(empleados[i]);
+            }
+        }
+    }
+
+    public Empleado maxSueldo(){
+        double maximo = Integer.MIN_VALUE;
+        int j = 0;
+
+        System.out.println("---Empleado mais pagado---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++) {
+                if (empleados[i].getSalario() > maximo){
+                    maximo = empleados[i].getSalario();
+                }
+            }
+
+            while (empleados[j].getSalario() != maximo){
+                j++;
+            }
+
+            return empleados[j];
+        }else {
+            System.out.println("Non hay empleados na empresa");
+            return null;
+        }
+    }
+
+    public Empleado minSueldo(){
+        double minimo = Integer.MAX_VALUE;
+        int j = 0;
+
+        System.out.println("---Empleado menos pagado---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++) {
+                if (empleados[i].getSalario() < minimo){
+                    minimo = empleados[i].getSalario();
+                }
+            }
+
+            while (empleados[j].getSalario() != minimo){
+                j++;
+            }
+
+            return empleados[j];
+        }else {
+            System.out.println("Non hay empleados na empresa");
+            return null;
+        }
+    }
+
+    public void  subidaDeSueldoXeral(int porcentaxe){
+
+        System.out.println("--Subida de sueldo---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++){
+                empleados[i].setSalario((empleados[i].getSalario()) + (empleados[i].getSalario() * porcentaxe / 100));
+            }
+        }else{
+            System.out.println("Non hay empleados na empresa");
+        }
+    }
+
+    public void subidaDeSueldoDepartamento(int porcentaxe, String departamento){
+
+        System.out.println("--Subida de sueldo---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++){
+                if (empleados[i].getDepartamento().equalsIgnoreCase(departamento)){
+                        empleados[i].setSalario((empleados[i].getSalario()) + (empleados[i].getSalario() * porcentaxe / 100));
+                }
+            }
+        }else{
+            System.out.println("Non hay empleados na empresa");
+        }
+    }
+
+    public void mostrarDepartamento(String departamento){
+        System.out.println("---Mostrar departamento---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++){
+                if (empleados[i].getDepartamento().equalsIgnoreCase(departamento)){
+                    System.out.println(empleados[i]);
+                }
+            }
+        }else{
+            System.out.println("Non hay empleados na empresa");
+        }
+    }
+
+    public Empleado busquedaPorDni(String dni){
+        System.out.println("---Mostrar empleado---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++) {
+                if (empleados[i].getDni().equalsIgnoreCase(dni)){
+                    return empleados[i];
+                }
+            }
+            return null;
+        } else {
+            System.out.println("Non hay empleados na empresa.");
+            return null;
+        }
+    }
+
+    public boolean borrarEmpleado(String dni){
+        System.out.println("---Borrar empleado---");
+
+        if (numeroEmpleados > 0){
+            for (int i = 0; i < numeroEmpleados; i++) {
+                if (empleados[i].getDni().equalsIgnoreCase(dni)){
+                    empleados[i] = null;
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            System.out.println("Non hay empleados na empresa.");
+            return false;
         }
     }
 }
