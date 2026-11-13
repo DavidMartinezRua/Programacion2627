@@ -1,12 +1,17 @@
+import java.time.LocalDate;
+
 public class TestEmpresa {
     public static void main(String[] args) {
         Empresa nitro = new Empresa("Nitro+");
+        Empleado e1 = new Empleado("Messi","12233445L", LocalDate.of(1999,11,11),1,3000,"Futbol");
 
         nitro.plantillaBase();
 
         nitro.mostrarEmpresa();
 
         nitro.mostrarNumeroDeEmpleados();
+
+        nitro.nuevoEmpleado(e1);
 
         nitro.filtrarSueldo(2600);
 

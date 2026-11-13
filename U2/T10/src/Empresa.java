@@ -72,7 +72,7 @@ public class Empresa {
     public void mostrarEmpresa(){
         System.out.println("\t---" + getNombre() + "---");
         for (int i = 0; i < numeroEmpleados; i++) {
-            if (empleados[i].getNombre() != null){
+            if (empleados[i] != null){
                 System.out.println(empleados[i]);
             }
         }
