@@ -2,12 +2,13 @@ import java.time.LocalDate;
 
 public class TestEmpresa {
     public static void main(String[] args) {
-        Empresa n1 = new Empresa("Nitro+");
-        Empleado e1 = new Empleado("Kageaki","11122233A", LocalDate.of(1923,3,22),2200.00,"Ventas");
+        MenuEmpresa menu = new MenuEmpresa();
 
+        menu.menu();
 
         n1.plantillaBase();
         n1.numeroDeEmpleados();
+        System.out.println(n1.EmpleadoSalarioMaior());
 
 
         n1.mostrarEmpresa();

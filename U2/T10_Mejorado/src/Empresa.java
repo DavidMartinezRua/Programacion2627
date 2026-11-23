@@ -99,6 +99,36 @@ public class Empresa {
         System.out.println("Salario medio:" + media + "€.");
     }
 
+    public Empleado EmpleadoSalarioMaior(){
+        System.out.println("Empleado con el mayor salario:");
+        double MAX_SALARIO = Integer.MIN_VALUE;
+        int posicion = 0, contador = 0;
+
+        for (Empleado empleado : empleados){
+            if (empleado.getSalario() > MAX_SALARIO){
+                MAX_SALARIO = empleado.getSalario();
+                posicion = contador;
+            }
+            contador++;
+        }
+        return empleados.get(posicion);
+    }
+
+    public Empleado EmpleadoSalarioMenor(){
+        System.out.println("Empleado con el menor salario:");
+        double MIN_SALARIO = Integer.MAX_VALUE;
+        int posicion = 0, contador = 0;
+
+        for (Empleado empleado : empleados){
+            if (empleado.getSalario() < MIN_SALARIO){
+                MIN_SALARIO = empleado.getSalario();
+                posicion = contador;
+            }
+            contador++;
+        }
+        return empleados.get(posicion);
+    }
+
 
 
     @Override
