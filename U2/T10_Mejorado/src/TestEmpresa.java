@@ -5,13 +5,5 @@ public class TestEmpresa {
         MenuEmpresa menu = new MenuEmpresa();
 
         menu.menu();
-
-        n1.plantillaBase();
-        n1.numeroDeEmpleados();
-        System.out.println(n1.EmpleadoSalarioMaior());
-
-
-        n1.mostrarEmpresa();
-
     }
 }

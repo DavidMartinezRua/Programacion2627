@@ -129,7 +129,49 @@ public class Empresa {
         return empleados.get(posicion);
     }
 
+    public void incrementoTotal(int porcentaje){
+        for (Empleado empleado : empleados){
+            empleado.setSalario((empleado.getSalario())+(empleado.getSalario()*porcentaje/100));
+        }
+        System.out.println("Incremento realizado!");
+    }
 
+    public void incrementoEnDepartamento(int porcentaje, String departamento){
+        for (Empleado empleado : empleados){
+            if (empleado.getDepartamento().equalsIgnoreCase(departamento)){
+                empleado.setSalario((empleado.getSalario())+(empleado.getSalario()*porcentaje/100));
+
+            }
+        }
+        System.out.println("Incremento realizado!");
+    }
+
+    public void mostrarDepartamento(String departamento){
+        System.out.println("Empleados traballando en '"+ departamento+ "':");
+        for (Empleado empleado : empleados){
+            if (empleado.getDepartamento().equalsIgnoreCase(departamento)){
+                System.out.println(empleado);
+            }
+        }
+    }
+
+    public Empleado buscarEmpleado(String dni){
+        System.out.println("Empleado co dni '" + dni + "':");
+        for (Empleado empleado : empleados){
+            if (empleado.getDni().equalsIgnoreCase(dni)){
+                return empleado;
+            }
+        }
+        System.out.println("Ningún empleado ten '" + dni +"' de DNI.");
+        return null;
+    }
+
+    public Empleado borrarEmpleado(String dni){
+        System.out.println("Empleado co dni '" + dni + "':");
+        empleados.removeIf(empleado -> empleado.getDni().equalsIgnoreCase(dni));
+        System.out.println("Ningún empleado ten '" + dni +"' de DNI.");
+        return null;
+    }
 
     @Override
     public String toString() {
